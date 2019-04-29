@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" contrent="width=device-width, inital-scale=1.0">
+  <title>Scott's Vue</title>
+  <link rel="stylesheet" href="./css/main.css">
+  <script src="./js/bundle.js"></script>
+</head>
+
+<body>
+  <h1>ToDo List</h1>
+  <div id="app">
+    <input type="text" v-model="newChore"/>
+    <label for="radioButton">High</label>
+    <input type="radio" name="radioPriority" value="High" v-model="newPriority" checked>
+    <label for="radioButton">Low</label>
+    <input type="radio" name="radioPriority" value="Low" v-model="newPriority">
+    <button @click="addChore">Add New Chore</button>
+    <ul>
+      <li v-for="(chore, index) in ToDo" :class="chore.priority ? 'highPriority':'lowPriority'">
+        <span>{{chore.chore}}</span>
+        <span v-if="chore.completed">Completed</span>
+        <button v-if="!chore.completed" @click="completeChore(index)">Complete</button>
+      </li>
+
+    </ul>
+  </div>
+</body>
+</html>
