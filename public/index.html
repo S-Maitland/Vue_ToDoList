@@ -18,7 +18,7 @@
     <input type="radio" name="radioPriority" value="Low" v-model="newPriority">
     <button @click="addChore">Add New Chore</button>
     <ul>
-      <li v-for="(chore, index) in ToDo" :class="chore.priority ? 'highPriority':'lowPriority'">
+      <li v-for="(chore, index) in ToDo" :class="chore.priority == 'High' ? 'highPriority':'lowPriority'">
         <span>{{chore.chore}}</span>
         <span v-if="chore.completed">Completed</span>
         <button v-if="!chore.completed" @click="completeChore(index)">Complete</button>
